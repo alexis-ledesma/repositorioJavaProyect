@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ServiceCrudPersonaService WSDL service -->
+
+  <service name="ServiceCrudPersona" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://crud.service.org"/>
+      <parameter name="wsdlServiceElement" value="ServiceCrudPersonaService"/>
+      <parameter name="schemaQualified" value="http://crud.service.org"/>
+      <parameter name="wsdlServicePort" value="ServiceCrudPersona"/>
+      <parameter name="className" value="org.service.crud.ServiceCrudPersona"/>
+      <parameter name="wsdlPortType" value="ServiceCrudPersona"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://crud.service.org" xmlns:retNS="http://crud.service.org" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="modificarPersonabatch" qname="operNS:modificarPersonabatch" returnQName="retNS:modificarPersonabatchReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://crud.service.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:nombre" type="tns:string"/>
+        <parameter xmlns:pns="http://crud.service.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:apepat" type="tns:string"/>
+        <parameter xmlns:pns="http://crud.service.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:tel" type="tns:string"/>
+        <parameter xmlns:pns="http://crud.service.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://crud.service.org" xmlns:retNS="http://crud.service.org" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="eliminarPersonabatch" qname="operNS:eliminarPersonabatch" returnQName="retNS:eliminarPersonabatchReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://crud.service.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://crud.service.org" xmlns:retNS="http://crud.service.org" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="consultaIdPersonabatch" qname="operNS:consultaIdPersonabatch" returnQName="retNS:consultaIdPersonabatchReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://crud.service.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://crud.service.org" name="connectDataBaseOracle" qname="operNS:connectDataBaseOracle" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://crud.service.org" xmlns:retNS="http://crud.service.org" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="altaPersonabatch" qname="operNS:altaPersonabatch" returnQName="retNS:altaPersonabatchReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://crud.service.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:int"/>
+        <parameter xmlns:pns="http://crud.service.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:nombre" type="tns:string"/>
+        <parameter xmlns:pns="http://crud.service.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:apepat" type="tns:string"/>
+        <parameter xmlns:pns="http://crud.service.org" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:tel" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="modificarPersonabatch connectDataBaseOracle eliminarPersonabatch altaPersonabatch consultaIdPersonabatch"/>
+
+  </service>
+</deployment>
